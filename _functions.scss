@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    $FUNCTIONS
+\*------------------------------------*/
+
+/**
+ * Convert px value to em
+ */
+@function em($px, $base: $smile-font-base-size){
+    @return ($px/$base)*1em;
+}
+
+/**
+ * Strip unit from value
+ */
+@function strip($num){
+    @return $num/($num*0+1);
+}

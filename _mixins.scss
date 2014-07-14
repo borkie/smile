@@ -1,0 +1,35 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+/**
+ * Output rem values with px fallback
+ */
+@mixin rem-fallback($property, $values...){
+    $max: length($values);
+    $px-values: '';
+    $rem-values: '';
+    
+    @for $i from 1 through $max{
+        $value: strip(nth($values, $i));
+        $px-values: #{$px-values+$value*$smile-font-base-size}px;
+        
+        // Add spaces if there are more elements in $values
+        @if $i<$max{
+            $px-values: #{$px-values+" "};
+        }
+    }
+    
+    @for $i from 1 through $max{
+        $value: strip(nth($values, $i));
+        $rem-values: #{$rem-values+$value}rem;
+        
+        // Add spaces if there are more elements in $values
+        @if $i<$max{
+            $rem-values: #{$rem-values+" "};
+        }
+    }
+    
+    #{$property}: $px-values;
+    #{$property}: $rem-values;
+}
